@@ -52,8 +52,10 @@ def convert_time(timestr):
     return datetime_object - UTC_OFFSET_TIMEDELTA
 
 if __name__ == "__main__":
-    prom = PrometheusConnect(url ="http://127.0.0.1:30090", disable_ssl=True)
-    metric_list = [m for m in prom.all_metrics()if metric_prefix in m]
+    # prom = PrometheusConnect(url ="http://127.0.0.1:30090", disable_ssl=True) # local
+    # prom = PrometheusConnect(url ="http://9.46.255.190:9090", disable_ssl=True) # from JiChen
+    prom = PrometheusConnect(url ="http://9.119.41.39:9090", disable_ssl=True)  # x86 from YeQi
+    metric_list = [m for m in prom.all_metrics() if metric_prefix in m]
     print("metrics:", metric_list)
 
     if len(sys.argv) < 2:
